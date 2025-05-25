@@ -9,7 +9,7 @@ export default function Home() {
     <HomeHeader />
       <div className="flex flex-col items-center mt-24">
         <Image
-          src="/images/doogle-icon.png"
+          src="/images/dougal-logo.png"
           alt="Doogle Logo"
           width={500}
           height={150}
