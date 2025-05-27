@@ -25,7 +25,7 @@ export default async function ImageSearchPage({ searchParams }) {
     return (
       <div className="flex flex-col justify-center items-center pt-10">
         <h1 className="text-3xl mb-4">Ah Feck Ted</h1>
-        <p className="text-lg">Please try again later.</p>
+        <p className="text-lg">Give it a whirl later.</p>
         <Link href="/" className="text-blue-500 mt-4">Home</Link>
       </div>
     );

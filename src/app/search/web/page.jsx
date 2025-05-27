@@ -25,7 +25,7 @@ export default async function WebSearchPage({ searchParams }) {
     return (
       <div className="flex flex-col justify-center items-center pt-10">
         <h1 className="text-3xl mb-4">Ah Feck Ted</h1>
-        <p className="text-lg">Please try again later.</p>
+        <p className="text-lg">They're a bunch of cowboys</p>
         <Link href="/" className="text-blue-500 mt-4">Home</Link>
       </div>
     );
@@ -38,7 +38,7 @@ export default async function WebSearchPage({ searchParams }) {
           No results found for "{query}"
         </h1>
         <p className="text-lg mb-4">
-          Try searching web or images for something else.
+          Is there anything to be said for another mass?
         </p>
         <Link href="/" className="text-blue-500">Home</Link>
       </div>

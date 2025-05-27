@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Dougal - An Innocent Search Engine",
-  description: "An alternative to Google",
+  description: "A simple alternative to Google",
 };
 
 export default function RootLayout({
