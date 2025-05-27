@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import WebSearchResults from "@/components/WebSearchResults";
 
 export default async function WebSearchPage({ searchParams }) {
   const query = searchParams?.searchTerm || "default";
@@ -16,12 +17,12 @@ export default async function WebSearchPage({ searchParams }) {
     }
 
     const data = await response.json();
-    results = data.items;
+    results = data;
   } catch (error) {
     console.error("Search error:", error.message);
     return (
       <div className="flex flex-col justify-center items-center pt-10">
-        <h1 className="text-3xl mb-4">Search error occurred</h1>
+        <h1 className="text-3xl mb-4">Ah Feck Ted</h1>
         <p className="text-lg">Please try again later.</p>
         <Link href="/" className="text-blue-500 mt-4">Home</Link>
       </div>
@@ -42,16 +43,19 @@ export default async function WebSearchPage({ searchParams }) {
     );
   }
 
-  return (
-    <div className="px-4 py-6">
-      {results.map((result, index) => (
-        <div key={index} className="mb-6">
-          <h2 className="text-xl font-bold">{result.title}</h2>
-          <a href={result.link} className="text-blue-600 hover:underline">{result.link}</a>
-          <p className="text-gray-700">{result.snippet}</p>
-        </div>
-      ))}
-    </div>
-  );
+  // return (
+  //   <div className="px-4 py-6">
+  //     {results.map((result, index) => (
+  //       <div key={index} className="mb-6">
+  //         <h2 className="text-xl font-bold">{result.title}</h2>
+  //         <a href={result.link} className="text-blue-600 hover:underline">{result.link}</a>
+  //         <p className="text-gray-700">{result.snippet}</p>
+  //       </div>
+  //     ))}
+  //   </div>
+  // );
+
+  return <WebSearchResults results={results} />;
+
 }
 
