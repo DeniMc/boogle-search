@@ -3,13 +3,14 @@ import Link from "next/link";
 import ImageSearchResults from "../../../components/ImageSearchResults";
 
 export default async function ImageSearchPage({ searchParams }) {
+  const startIndex = searchParams.start || '1';
   const query = searchParams?.searchTerm || "default";
 
   let results = null;
 
   try {
     const response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${query}&searchType=image`
+      `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${query}&searchType=image&start=${startIndex}`
     );
 
     if (!response.ok) {

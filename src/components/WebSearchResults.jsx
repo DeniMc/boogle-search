@@ -2,10 +2,11 @@ import React from 'react'
 import Link from 'next/link';
 import Parser from 'html-react-parser';
 import { getRandomInspiration } from './RandomInspiration';
+import PaginationButtons from './PaginationButtons';
 export default function WebSearchResults({ results }) {
       const { image, quote } = getRandomInspiration();
   return (
-    <div className='w-full mx-auto px-3 pb-24 sm:pl-[5%] md:pl-[14%] lg:pl-52'>
+    <div className='w-full mx-auto px-3 sm:pb-24 pb-40 sm:pl-[5%] md:pl-[14%] lg:pl-52'>
 
  {/* 🎯 Random image and quote */}
       <div className="flex items-center gap-4 mb-6 bg-gray-50 p-4 rounded shadow">
@@ -29,6 +30,7 @@ export default function WebSearchResults({ results }) {
       <p className='text-gray-600'>{Parser(result.htmlSnippet)}</p>
     </div>
   ))}
+  <PaginationButtons />
    </div>
   );
 }
