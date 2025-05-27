@@ -37,7 +37,7 @@ export default function SearchHeader() {
             <TbGridDots className="bg-transparent hover:bg-gray-200 p-2 text-4xl rounded-full cursor-pointer" />
           </div>
           <button className="bg-blue-500 text-white px-4 py-1 text-sm sm:px-6 sm:py-2 font-medium rounded-md hover:brightness-105 hover:shadow-md transition-shadow">
-            Sign in
+            <Link href={"https://palestinecampaign.org/"}>Sign in</Link>
           </button>
         </div>
       </div>
