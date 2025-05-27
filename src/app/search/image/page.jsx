@@ -5,6 +5,7 @@ import ImageSearchResults from "../../../components/ImageSearchResults";
 export default async function ImageSearchPage({ searchParams }) {
   const startIndex = searchParams.start || '1';
   const query = searchParams?.searchTerm || "default";
+    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate loading delay
 
   let results = null;
 
