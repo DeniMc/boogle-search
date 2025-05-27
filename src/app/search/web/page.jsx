@@ -43,17 +43,7 @@ export default async function WebSearchPage({ searchParams }) {
     );
   }
 
-  // return (
-  //   <div className="px-4 py-6">
-  //     {results.map((result, index) => (
-  //       <div key={index} className="mb-6">
-  //         <h2 className="text-xl font-bold">{result.title}</h2>
-  //         <a href={result.link} className="text-blue-600 hover:underline">{result.link}</a>
-  //         <p className="text-gray-700">{result.snippet}</p>
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
+ 
 
   return <WebSearchResults results={results} />;
 
