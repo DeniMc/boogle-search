@@ -1,7 +1,57 @@
-import React from 'react'
+import React from "react";
+import Link from "next/link";
 
-export default function WebSearchPage() {
+export default async function WebSearchPage({ searchParams }) {
+  const query = searchParams?.searchTerm || "default";
+
+  let results = null;
+
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${query}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Ah you've messed up there, Ted.");
+    }
+
+    const data = await response.json();
+    results = data.items;
+  } catch (error) {
+    console.error("Search error:", error.message);
+    return (
+      <div className="flex flex-col justify-center items-center pt-10">
+        <h1 className="text-3xl mb-4">Search error occurred</h1>
+        <p className="text-lg">Please try again later.</p>
+        <Link href="/" className="text-blue-500 mt-4">Home</Link>
+      </div>
+    );
+  }
+
+  if (!results || results.length === 0) {
+    return (
+      <div className="flex flex-col justify-center items-center pt-10">
+        <h1 className="text-3xl mb-4">
+          No results found for "{query}"
+        </h1>
+        <p className="text-lg mb-4">
+          Try searching web or images for something else.
+        </p>
+        <Link href="/" className="text-blue-500">Home</Link>
+      </div>
+    );
+  }
+
   return (
-    <div>WebSearchPage</div>
-  )
+    <div className="px-4 py-6">
+      {results.map((result, index) => (
+        <div key={index} className="mb-6">
+          <h2 className="text-xl font-bold">{result.title}</h2>
+          <a href={result.link} className="text-blue-600 hover:underline">{result.link}</a>
+          <p className="text-gray-700">{result.snippet}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
+
