@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'; // 🆕 import Suspense
 import Link from 'next/link';
 import Parser from 'html-react-parser';
 import { getRandomInspiration } from './RandomInspiration';
@@ -30,7 +30,9 @@ export default function WebSearchResults({ results }) {
       <p className='text-gray-600'>{Parser(result.htmlSnippet)}</p>
     </div>
   ))}
-  <PaginationButtons />
+  <Suspense fallback={null}>
+          <PaginationButtons />
+        </Suspense>
    </div>
   );
 }
