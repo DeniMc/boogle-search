@@ -1,11 +1,13 @@
-import React from "react";
+// search/image/page.jsx
+import React, { Suspense } from "react";
 import Link from "next/link";
 import ImageSearchResults from "../../../components/ImageSearchResults";
 
 export default async function ImageSearchPage({ searchParams }) {
   const startIndex = searchParams.start || '1';
   const query = searchParams?.searchTerm || "default";
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate loading delay
+
+  await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate loading delay
 
   let results = null;
 
@@ -45,9 +47,10 @@ export default async function ImageSearchPage({ searchParams }) {
     );
   }
 
- 
-
-  return <ImageSearchResults results={results} />;
-
+  return (
+    <Suspense fallback={<div className="text-center py-10">Loading results…</div>}>
+      <ImageSearchResults results={results} />
+    </Suspense>
+  );
 }
 

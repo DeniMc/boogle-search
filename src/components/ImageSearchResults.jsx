@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'; // 🆕 import Suspense
+import React from 'react'; 
 import Link from 'next/link';
 import { getRandomInspiration } from './RandomInspiration';
 import PaginationButtons from './PaginationButtons';
@@ -36,9 +36,9 @@ export default function ImageSearchResults({ results }) {
         ))}
       </div>
       <div className="ml-16">
-        <Suspense fallback={null}>
+        
           <PaginationButtons />
-        </Suspense>
+       
       </div>
     </div>
   );

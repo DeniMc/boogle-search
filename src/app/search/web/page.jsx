@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import WebSearchResults from "@/components/WebSearchResults";
 
@@ -11,7 +11,7 @@ export default async function WebSearchPage({ searchParams }) {
 
   try {
     const response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${query}start=${startIndex}`
+      `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${query}&start=${startIndex}`
     );
 
     if (!response.ok) {
@@ -45,9 +45,10 @@ export default async function WebSearchPage({ searchParams }) {
     );
   }
 
- 
-
-  return <WebSearchResults results={results} />;
-
+  return (
+    <Suspense fallback={<div className="text-center py-10">Loading results…</div>}>
+      <WebSearchResults results={results} />
+    </Suspense>
+  );
 }
 
