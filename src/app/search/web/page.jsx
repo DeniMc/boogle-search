@@ -6,7 +6,7 @@ import WebSearchResults from "@/components/WebSearchResults";
 export default async function WebSearchPage({ searchParams }) {
   const startIndex = searchParams.start || '1';
   const query = searchParams?.searchTerm || "default";
-  await new Promise(resolve => setTimeout(resolve, 3000)); // Simulate loading delay
+  await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate loading delay
 
   let results = null;
 

@@ -1,48 +1,44 @@
-// import React from 'react'
-
-// export default function loading() {
-//   return (
-//     <>
-//     <div className="mx-2 pt-10 max-w-6xl lg:pl-52 animate-pulse">
-//         <div className="h-2.5 w-48 bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-3.5 [w-360px] bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-2.5 [w-560px] bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-2.5 [w-530px] bg-gray-200 rounded-full mb-2.5"></div>
-//     </div>
-//      <div className="mx-2 pt-10 max-w-6xl lg:pl-52 animate-pulse">
-//         <div className="h-2.5 w-48 bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-3.5 [w-360px] bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-2.5 [w-560px] bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-2.5 [w-530px] bg-gray-200 rounded-full mb-2.5"></div>
-//     </div>
-//      <div className="mx-2 pt-10 max-w-6xl lg:pl-52 animate-pulse">
-//         <div className="h-2.5 w-48 bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-3.5 [w-360px] bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-2.5 [w-560px] bg-gray-200 rounded-full mb-2.5"></div>
-//         <div className="h-2.5 [w-530px] bg-gray-200 rounded-full mb-2.5"></div>
-//     </div>
-//     </>
-//   )
-// }
-
-// components/Loading.jsx
-import React from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
 
 export default function Loading() {
+  // List of gif filenames in /public/gifs
+  const gifs = [
+    'gif-1.gif',
+    'gif-2.gif',
+    'gif-3.gif',
+    'gif-4.gif',
+    'gif-5.gif',
+    'gif-6.gif',
+    'gif-7.gif',
+    'gif-8.gif',
+    'gif-9.gif',
+    'gif-10.gif',
+    'gif-11.gif',
+    'gif-12.gif',
+    'gif-13.gif',
+    'gif-14.gif',
+    'gif-15.gif',
+    'gif-16.gif',
+    'gif-17.gif',
+    'gif-18.gif',   
+  ];
+
+  // Pick a random gif on component render
+  const randomGif = useMemo(() => {
+    const index = Math.floor(Math.random() * gifs.length);
+    return gifs[index];
+  }, []);
+
   return (
     <div className="flex flex-col items-center mt-0 h-screen bg-white">
       <Image
-        src="/images/go-on.gif"
+        src={`/gifs/${randomGif}`}
         alt="Loading animation"
         width={500}
         height={500}
         priority
       />
-      <p className="text-gray-500 mt-4 text-lg">Ted: “I think it might work, Dougal. I know it’ll work. It will work.”
-Dougal: “It won’t work, will it Ted?”
-Ted: “It won’t, no.”</p>
     </div>
   );
 }
-
